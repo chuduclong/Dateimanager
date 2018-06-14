@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,8 +25,12 @@ namespace View
     public partial class MainWindow : Window
     {
         private RunFile run1 = new RunFile();
+        Datenbank db = null;
         public MainWindow()
         {
+            db = new Datenbank();
+            db.openDatabase();
+            listDokumente.Items.Add(db.openDatabase());
             InitializeComponent();
         }
 
