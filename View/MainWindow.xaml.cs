@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Word = Microsoft.Office.Interop.Word;
+
 
 namespace View
 {
@@ -23,8 +23,7 @@ namespace View
     /// </summary>
     public partial class MainWindow : Window
     {
-        Word.Application WordApp;
-        Word.Document Doc;
+        private RunFile run1 = new RunFile();
         public MainWindow()
         {
             InitializeComponent();
@@ -32,20 +31,17 @@ namespace View
 
         private void buttonChoose_Click(object sender, RoutedEventArgs e)
         {
-            Object oMissing = System.Reflection.Missing.Value;
-            Doc = WordApp.Documents.Open("DATNAME", oMissing, false);
+            //run1.openExistingWordFile();
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
         {
-            WordApp = new Word.Application();
-            WordApp.Visible = true;
-            Doc = WordApp.Documents.Add();
+            run1.openNewWordFile();
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Doc.Close();
+            run1.closeCurrentWordFile();
         }
     }
 }
