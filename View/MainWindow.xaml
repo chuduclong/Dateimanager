@@ -20,14 +20,14 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions >
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Button x:Name="buttonWord" Content="WordDokument" Width="177" ></Button>
-            <Button x:Name="buttonPower" Content="PowerPoint" Width="170" />
-            <Button x:Name="buttonExcel" Content="Excel" Width="170"></Button>
+            <Button x:Name="buttonWord" Content="WordDokument" Width="100" ></Button>
+            <Button x:Name="buttonPower" Content="PowerPoint" Width="100" />
+            <Button x:Name="buttonExcel" Content="Excel" Width="100"></Button>
         </StackPanel>
         
         <Button Grid.Row="2" x:Name="buttonChoose" Content="Datei öffnen" Click="buttonChoose_Click"></Button>
         <Button Grid.Row="3" x:Name="buttonDelete" Content="Datei Löschen" Click="buttonDelete_Click"></Button>
         <Button Grid.Row="4" x:Name="buttonOpen" Content="Datei hinzufügen" Click="buttonOpen_Click"></Button>
-        <ListBox x:Name="listDokumente" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" ItemsSource="{Binding}"></ListBox>
+        <ListBox x:Name="listDokumente" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3"></ListBox>
     </Grid>
 </Window>
