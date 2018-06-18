@@ -10,11 +10,11 @@ namespace Model
 {
     public class Datenbank
     {
-        ObservableCollection<Projekt> lstDoku;
+        List<Projekt> lstDoku;
         OleDbConnection con = new OleDbConnection();
         OleDbDataReader reader;
 
-        public ObservableCollection<Projekt> LstDoku
+        public List<Projekt> LstDoku
         {
             get
             {
@@ -37,11 +37,11 @@ namespace Model
 
         public Datenbank()
         {
-            con = new OleDbConnection(Model.Properties.Settings.Default.DbString);
-            LstDoku = new ObservableCollection<Projekt>();
+            con = new OleDbConnection(Properties.Settings.Default.DbString);
+            LstDoku = new List<Projekt>();
         }
 
-        public ObservableCollection<Projekt> openDatabase()
+        public List<Projekt> openDatabase()
         {
             OleDbCommand cmd = con.CreateCommand();
             cmd.CommandText = "Select * from Files";
@@ -50,15 +50,15 @@ namespace Model
             int i = 0;
             while(reader.Read())
             {
-                Projekt wd = mkWordDokumentObject(reader, i);
-                lstDoku.Add(wd);
+                Projekt wd = mkDokumentObject(reader, i);
+                LstDoku.Add(wd);
             }
             reader.Close();
             con.Close();
             return lstDoku;
         }
 
-        private Projekt mkWordDokumentObject(OleDbDataReader reader, int i)
+        private Projekt mkDokumentObject(OleDbDataReader reader, int i)
         {
             Projekt wd = new Projekt();
             try
@@ -90,7 +90,7 @@ namespace Model
 
         private object DokumentenOeffnen(String dokuName)
         {
-            foreach(Projekt p in lstDoku)
+            foreach(Projekt p in LstDoku)
             {
                 if(p.Name.Equals(dokuName))
                 {
@@ -100,6 +100,11 @@ namespace Model
             return null;
         }
 
+        protected void WordAnzeigen()
+        {
+            lstDoku.Find(x => x.Dateiart.Contains("word"));
+
+        }
 
 
     }

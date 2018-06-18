@@ -13,19 +13,21 @@ namespace Model
         private object objekt;
         private int groesse;
         private DateTime erstellDatum;
+        private String dateiart;
 
         public Projekt()
         {
 
         }
 
-        public Projekt(int id, string name, object objekt, int groesse, DateTime erstellDatum)
+        public Projekt(int id, string name, object objekt, int groesse, DateTime erstellDatum, String dateiArt)
         {
             this.id = id;
             this.name = name;
             this.objekt = objekt;
             this.groesse = groesse;
             this.erstellDatum = erstellDatum;
+            this.Dateiart = dateiArt;
         }
 
         public int Id
@@ -90,6 +92,19 @@ namespace Model
             set
             {
                 erstellDatum = value;
+            }
+        }
+
+        public string Dateiart
+        {
+            get
+            {
+                return dateiart;
+            }
+
+            set
+            {
+                dateiart = value;
             }
         }
 
