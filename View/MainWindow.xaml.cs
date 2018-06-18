@@ -26,6 +26,9 @@ namespace View
     {
         private RunFile run1 = new RunFile();
         Datenbank db = null;
+        Boolean word = false;
+        Boolean powerpoint = false;
+        Boolean excel = false;
         public MainWindow()
         {
             db = new Datenbank();
@@ -36,17 +39,32 @@ namespace View
 
         private void buttonChoose_Click(object sender, RoutedEventArgs e)
         {
-            //run1.openExistingWordFile();
+            
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
         {
-            run1.openNewWordFile();
+            
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            run1.closeCurrentWordFile();
+           
+        }
+
+        private void buttonWord_Click(object sender, RoutedEventArgs e)
+        {
+            run1.chooseData("word");
+        }
+
+        private void buttonPower_Click(object sender, RoutedEventArgs e)
+        {
+            run1.chooseData("powerpoint");
+        }
+
+        private void buttonExcel_Click(object sender, RoutedEventArgs e)
+        {
+            run1.chooseData("excel");
         }
     }
 }

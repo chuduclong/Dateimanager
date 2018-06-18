@@ -1,30 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Word = Microsoft.Office.Interop.Word;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace View
 {
     class RunFile
     {
         PowerPoint.Application PowerPointApp;
+        Excel.Application ExcelApp;
         PowerPoint.Presentation Pres;
         Word.Application WordApp;
         Word.Document Doc;
+        Excel.Workbook Workbook;
 
         public void openExistingWordFile(string name)
         {
             Object oMissing = System.Reflection.Missing.Value;
-            Doc = WordApp.Documents.Open("DATNAME", oMissing, false);
+            Doc = WordApp.Documents.Open(name, oMissing, false);
         }
 
         public void openExistingPowerPointPresentation(string name)
         {
             Object oMissing = System.Reflection.Missing.Value;
-            Pres = PowerPointApp.Presentations.Open("DATNAME");
+            Pres = PowerPointApp.Presentations.Open(name);
+        }
+
+        public void openExistingExcelWorkbook(string name)
+        {
+            Object oMissing = System.Reflection.Missing.Value;
+            Workbook = ExcelApp.Workbooks.Open(name, oMissing, false);
         }
 
         public void openNewWordFile()
@@ -32,6 +37,13 @@ namespace View
             WordApp = new Word.Application();
             WordApp.Visible = true;
             Doc = WordApp.Documents.Add();
+        }
+
+        public void openNewExcelWorkbook()
+        {
+            ExcelApp = new Excel.Application();
+            ExcelApp.Visible = true;
+            Workbook = ExcelApp.Workbooks.Add();
         }
 
         public void openNewPowerPointPresentation()
@@ -46,9 +58,31 @@ namespace View
             Doc.Close();
         }
 
+        public void closeCurrentExcelWorkbook()
+        {
+            Workbook.Close();
+        }
         public void closeCurrentPowerPointPresentation()
         {
             Pres.Close();
+        }
+
+        public void chooseData(String application)
+        {
+            switch(application)
+            {
+                case "word":
+                    break;
+
+                case "powerpoint":
+                    break;
+
+                case "excel":
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }
