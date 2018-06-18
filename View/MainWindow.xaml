@@ -27,7 +27,7 @@
         
         <Button Grid.Row="2" x:Name="buttonChoose" Content="Datei öffnen" Click="buttonChoose_Click"></Button>
         <Button Grid.Row="3" x:Name="buttonDelete" Content="Datei Löschen" Click="buttonDelete_Click"></Button>
-        <Button Grid.Row="4" x:Name="buttonOpen" Content="Datei hinzufügen" Click="buttonOpen_Click"></Button>
+        <Button Grid.Row="4" x:Name="buttonOpen" Content="Datei hinzufügen" Click="buttonHinzufuegen_Click"></Button>
         <ListBox x:Name="listDokumente" Grid.Row="2" Grid.Column="1" Grid.RowSpan="3"></ListBox>
     </Grid>
 </Window>
