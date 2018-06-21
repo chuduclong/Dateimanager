@@ -26,8 +26,8 @@ namespace Model.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\chu duclong.BSZ.000\\Source" +
-            "\\Repos\\Dateimanager2\\Model\\Properties\\IuKDBCsharp1.accdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"C:\\Users\\chu duclong.BSZ.000\\Sourc" +
+            "e\\Repos\\Dateimanager2\\Model\\Properties\\IuKDBCsharp1.accdb\"")]
         public string DbString {
             get {
                 return ((string)(this["DbString"]));

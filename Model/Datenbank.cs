@@ -14,19 +14,6 @@ namespace Model
         OleDbConnection con = new OleDbConnection();
         OleDbDataReader reader;
 
-        public List<Projekt> LstDoku
-        {
-            get
-            {
-                return lstDoku;
-            }
-
-            set
-            {
-                lstDoku = value;
-            }
-        }
-
         private void OpenConnection()
         {
             if (con.State != System.Data.ConnectionState.Open)
@@ -38,7 +25,7 @@ namespace Model
         public Datenbank()
         {
             con = new OleDbConnection(Properties.Settings.Default.DbString);
-            LstDoku = new List<Projekt>();
+            lstDoku = new List<Projekt>();
         }
 
         public List<Projekt> openDatabase()
@@ -51,7 +38,7 @@ namespace Model
             while(reader.Read())
             {
                 Projekt wd = mkDokumentObject(reader, i);
-                LstDoku.Add(wd);
+                lstDoku.Add(wd);
             }
             reader.Close();
             con.Close();
@@ -68,6 +55,7 @@ namespace Model
                 wd.Objekt = pruefen(reader[i++]);
                 wd.Groesse = Convert.ToInt32(pruefen(reader[i++]));
                 wd.ErstellDatum = Convert.ToDateTime(pruefen(reader[i++]));
+                wd.Dateiart = Convert.ToString(pruefen(reader[i++]));
             }
             catch(Exception)
             {
@@ -90,7 +78,7 @@ namespace Model
 
         private object DokumentenOeffnen(String dokuName)
         {
-            foreach(Projekt p in LstDoku)
+            foreach(Projekt p in lstDoku)
             {
                 if(p.Name.Equals(dokuName))
                 {
