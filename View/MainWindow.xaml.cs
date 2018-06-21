@@ -51,7 +51,7 @@ namespace View
 
         private void buttonWord_Click(object sender, RoutedEventArgs e)
         {
-            run1.chooseData("word");
+           listDokumente.ItemsSource = db.WordAnzeigen();
         }
 
         private void buttonPower_Click(object sender, RoutedEventArgs e)
