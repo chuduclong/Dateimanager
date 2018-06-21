@@ -102,7 +102,7 @@ namespace Model
 
         public List<Projekt> WordAnzeigen()
         {
-            List<Projekt> wordListe = new List<Projekt>();
+            List<Projekt> Liste = new List<Projekt>();
             OleDbCommand cmd = con.CreateCommand();
             cmd.CommandText = "Select * from Files where dateiart = 'word'";
             OpenConnection();
@@ -111,12 +111,50 @@ namespace Model
             while (reader.Read())
             {
                 Projekt wd = mkDokumentObject(reader, i);
-                wordListe.Add(wd);
+                Liste.Add(wd);
             }
             reader.Close();
             con.Close();
-            return wordListe;
+            return Liste;
         }
+
+        public List<Projekt> PowerpointAnzeigen()
+        {
+            List<Projekt> Liste = new List<Projekt>();
+            OleDbCommand cmd = con.CreateCommand();
+            cmd.CommandText = "Select * from Files where dateiart = 'powerpoint'";
+            OpenConnection();
+            reader = cmd.ExecuteReader();
+            int i = 0;
+            while (reader.Read())
+            {
+                Projekt wd = mkDokumentObject(reader, i);
+                Liste.Add(wd);
+            }
+            reader.Close();
+            con.Close();
+            return Liste;
+        }
+
+        public List<Projekt> ExcelAnzeigen()
+        {
+            List<Projekt> Liste = new List<Projekt>();
+            OleDbCommand cmd = con.CreateCommand();
+            cmd.CommandText = "Select * from Files where dateiart = 'excel'";
+            OpenConnection();
+            reader = cmd.ExecuteReader();
+            int i = 0;
+            while (reader.Read())
+            {
+                Projekt wd = mkDokumentObject(reader, i);
+                Liste.Add(wd);
+            }
+            reader.Close();
+            con.Close();
+            return Liste;
+        }
+
+
 
 
     }

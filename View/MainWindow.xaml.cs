@@ -56,12 +56,12 @@ namespace View
 
         private void buttonPower_Click(object sender, RoutedEventArgs e)
         {
-            
+            listDokumente.ItemsSource = db.PowerpointAnzeigen();
         }
 
         private void buttonExcel_Click(object sender, RoutedEventArgs e)
         {
-            
+            listDokumente.ItemsSource = db.ExcelAnzeigen();
         }
     }
 }
