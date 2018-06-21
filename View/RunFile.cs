@@ -74,7 +74,6 @@ namespace View
             switch(application)
             {
                 case "word":
-                    ds.WordAnzeigen();
                     break;
 
                 case "powerpoint":
