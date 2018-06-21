@@ -100,10 +100,22 @@ namespace Model
             return null;
         }
 
-        protected void WordAnzeigen()
+        public List<Projekt> WordAnzeigen()
         {
-            lstDoku.Find(x => x.Dateiart.Contains("word"));
-
+            List<Projekt> wordListe = new List<Projekt>();
+            OleDbCommand cmd = con.CreateCommand();
+            cmd.CommandText = "Select * from Files where dateiart = 'word'";
+            OpenConnection();
+            reader = cmd.ExecuteReader();
+            int i = 0;
+            while (reader.Read())
+            {
+                Projekt wd = mkDokumentObject(reader, i);
+                wordListe.Add(wd);
+            }
+            reader.Close();
+            con.Close();
+            return wordListe;
         }
 
 

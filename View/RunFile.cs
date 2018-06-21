@@ -2,6 +2,7 @@
 using Word = Microsoft.Office.Interop.Word;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 using Excel = Microsoft.Office.Interop.Excel;
+using Model;
 
 namespace View
 {
@@ -13,6 +14,7 @@ namespace View
         Word.Application WordApp;
         Word.Document Doc;
         Excel.Workbook Workbook;
+        Datenbank ds = new Datenbank();
 
         public void openExistingWordFile(string name)
         {
@@ -72,6 +74,7 @@ namespace View
             switch(application)
             {
                 case "word":
+                    ds.WordAnzeigen();
                     break;
 
                 case "powerpoint":
