@@ -68,23 +68,5 @@ namespace View
         {
             Pres.Close();
         }
-
-        public void chooseData(String application)
-        {
-            switch(application)
-            {
-                case "word":
-                    break;
-
-                case "powerpoint":
-                    break;
-
-                case "excel":
-                    break;
-
-                default:
-                    break;
-            }
-        }
     }
 }
