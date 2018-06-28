@@ -29,9 +29,21 @@ namespace View
 
         private void buttonChoose_Click(object sender, RoutedEventArgs e)
         {
-            if (dateiart != null)
+            openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog1.InitialDirectory = @"C:\";
+            openFileDialog1.Title = "Geeignete Datei auswählen";
+            openFileDialog1.Filter = "Word Documents (*.DOC;*.DOCX)|*.DOC;*.DOCX";
+            openFileDialog1.Filter = "Excel Workbook (*.XLS;*.XSLX)|*.XLS;*.XLSX";
+            openFileDialog1.Filter = "PowerPoint Präsentation (*.PPT;*.PPTX)|*.PPT;*.PPTX";
+            openFileDialog1.ShowDialog();
+            filename = openFileDialog1.FileName;
+        }
+
+        private void buttonOpen_Click(object sender, RoutedEventArgs e)
+        {
+           if(dateiart != null)
             {
-                if (filename != null)
+                if(filename != null)
                 {
                     switch (dateiart)
                     {

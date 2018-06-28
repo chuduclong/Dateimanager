@@ -18,7 +18,7 @@ namespace Model
         {
             if (con.State != System.Data.ConnectionState.Open)
             {
-                con.Open();
+               con.Open();
             }
         }
 
@@ -32,6 +32,7 @@ namespace Model
         {
             OpenConnection();
             OleDbCommand cmd = con.CreateCommand();
+            OpenConnection();
             cmd.CommandText = "Select * from Files";
             reader = cmd.ExecuteReader();
             int i = 0;
