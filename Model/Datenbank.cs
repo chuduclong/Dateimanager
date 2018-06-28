@@ -89,6 +89,11 @@ namespace Model
             return null;
         }
 
+        public void delete()
+        {
+            
+        }
+
         public List<Projekt> WordAnzeigen()
         {
             List<Projekt> Liste = new List<Projekt>();
