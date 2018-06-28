@@ -32,7 +32,6 @@ namespace Model
         {
             OpenConnection();
             OleDbCommand cmd = con.CreateCommand();
-            OpenConnection();
             cmd.CommandText = "Select * from Files";
             reader = cmd.ExecuteReader();
             int i = 0;
@@ -89,63 +88,100 @@ namespace Model
             return null;
         }
 
-        public void delete()
+        public void delete(Object o)
         {
-            
+            try
+            {
+                Projekt p = (Projekt)o;
+                OleDbCommand cmd = con.CreateCommand();
+                cmd.CommandText = "Delete from Files where Name = " + p.Name;
+                OpenConnection();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Projekt> WordAnzeigen()
         {
-            List<Projekt> Liste = new List<Projekt>();
-            OleDbCommand cmd = con.CreateCommand();
-            cmd.CommandText = "Select * from Files where dateiart = 'word'";
-            OpenConnection();
-            reader = cmd.ExecuteReader();
-            int i = 0;
-            while (reader.Read())
+            try
             {
-                Projekt wd = mkDokumentObject(reader, i);
-                Liste.Add(wd);
+                List<Projekt> Liste = new List<Projekt>();
+                OleDbCommand cmd = con.CreateCommand();
+                cmd.CommandText = "Select * from Files where dateiart = 'word'";
+                OpenConnection();
+                reader = cmd.ExecuteReader();
+                int i = 0;
+                while (reader.Read())
+                {
+                    Projekt wd = mkDokumentObject(reader, i);
+                    Liste.Add(wd);
+                }
+                reader.Close();
+                con.Close();
+                return Liste;
             }
-            reader.Close();
-            con.Close();
-            return Liste;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Projekt> PowerpointAnzeigen()
         {
-            List<Projekt> Liste = new List<Projekt>();
-            OleDbCommand cmd = con.CreateCommand();
-            cmd.CommandText = "Select * from Files where dateiart = 'powerpoint'";
-            OpenConnection();
-            reader = cmd.ExecuteReader();
-            int i = 0;
-            while (reader.Read())
+            try
             {
-                Projekt wd = mkDokumentObject(reader, i);
-                Liste.Add(wd);
+                List<Projekt> Liste = new List<Projekt>();
+                OleDbCommand cmd = con.CreateCommand();
+                cmd.CommandText = "Select * from Files where dateiart = 'powerpoint'";
+                OpenConnection();
+                reader = cmd.ExecuteReader();
+                int i = 0;
+                while (reader.Read())
+                {
+                    Projekt wd = mkDokumentObject(reader, i);
+                    Liste.Add(wd);
+                }
+                reader.Close();
+                con.Close();
+                return Liste;
             }
-            reader.Close();
-            con.Close();
-            return Liste;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Projekt> ExcelAnzeigen()
         {
-            List<Projekt> Liste = new List<Projekt>();
-            OleDbCommand cmd = con.CreateCommand();
-            cmd.CommandText = "Select * from Files where dateiart = 'excel'";
-            OpenConnection();
-            reader = cmd.ExecuteReader();
-            int i = 0;
-            while (reader.Read())
+            try
             {
-                Projekt wd = mkDokumentObject(reader, i);
-                Liste.Add(wd);
+                List<Projekt> Liste = new List<Projekt>();
+                OleDbCommand cmd = con.CreateCommand();
+                cmd.CommandText = "Select * from Files where dateiart = 'excel'";
+                OpenConnection();
+                reader = cmd.ExecuteReader();
+                int i = 0;
+                while (reader.Read())
+                {
+                    Projekt wd = mkDokumentObject(reader, i);
+                    Liste.Add(wd);
+                }
+                reader.Close();
+                con.Close();
+                return Liste;
             }
-            reader.Close();
-            con.Close();
-            return Liste;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 

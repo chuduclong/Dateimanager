@@ -65,7 +65,7 @@ namespace View
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            db.delete();
+            db.delete(listDokumente.SelectedItem);
         }
 
         private void buttonWord_Click(object sender, RoutedEventArgs e)
