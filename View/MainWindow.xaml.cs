@@ -27,7 +27,7 @@ namespace View
             listDokumente.ItemsSource = db.openDatabase();
         }
 
-        private void buttonChoose_Click(object sender, RoutedEventArgs e)
+        private void buttonOeffnen_Click(object sender, RoutedEventArgs e)
         {
             if (dateiart != null)
             {
@@ -53,7 +53,7 @@ namespace View
         }
 
 
-        private void buttonOpen_Click(object sender, RoutedEventArgs e)
+        private void buttonHinzufuegen_Click(object sender, RoutedEventArgs e)
         {
             openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             openFileDialog1.InitialDirectory = @"C:\";
