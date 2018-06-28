@@ -110,7 +110,7 @@ namespace Model
 
         public override string ToString()
         {
-            return name + " " + erstellDatum + " " + groesse;
+            return name + " " + erstellDatum + " " + groesse + " " + dateiart;
         }
 
     }
