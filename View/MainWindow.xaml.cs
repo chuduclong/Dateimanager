@@ -32,9 +32,7 @@ namespace View
             openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             openFileDialog1.InitialDirectory = @"C:\";
             openFileDialog1.Title = "Geeignete Datei auswählen";
-            openFileDialog1.Filter = "Word Documents (*.DOC;*.DOCX)|*.DOC;*.DOCX";
-            openFileDialog1.Filter = "Excel Workbook (*.XLS;*.XSLX)|*.XLS;*.XLSX";
-            openFileDialog1.Filter = "PowerPoint Präsentation (*.PPT;*.PPTX)|*.PPT;*.PPTX";
+            openFileDialog1.Filter = "Word Documents (*.DOC;*.DOCX)|*.DOC;*.DOCX|Excel Workbook (*.XLS;*.XSLX)|*.XLS;*.XLSX|PowerPoint Präsentation (*.PPT;*.PPTX)|*.PPT;*.PPTX";
             openFileDialog1.ShowDialog();
             filename = openFileDialog1.FileName;
         }
