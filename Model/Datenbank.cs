@@ -30,6 +30,7 @@ namespace Model
 
         public List<Projekt> openDatabase()
         {
+            OpenConnection();
             OleDbCommand cmd = con.CreateCommand();
             OpenConnection();
             cmd.CommandText = "Select * from Files";

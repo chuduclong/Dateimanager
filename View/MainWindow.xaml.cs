@@ -69,7 +69,7 @@ namespace View
 
         private void buttonWord_Click(object sender, RoutedEventArgs e)
         {
-           listDokumente.ItemsSource = db.WordAnzeigen();
+            listDokumente.ItemsSource = db.WordAnzeigen();
             dateiart = "word";
         }
 
