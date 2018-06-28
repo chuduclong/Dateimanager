@@ -11,7 +11,6 @@ namespace Model
         private int id;
         private String name;
         private object objekt;
-        private int groesse;
         private DateTime erstellDatum;
         private String dateiart;
 
@@ -20,14 +19,13 @@ namespace Model
 
         }
 
-        public Projekt(int id, string name, object objekt, int groesse, DateTime erstellDatum, String dateiArt)
+        public Projekt(int id, string name, DateTime erstellDatum, String dateiArt, object objekt)
         {
             this.id = id;
             this.name = name;
-            this.objekt = objekt;
-            this.groesse = groesse;
             this.erstellDatum = erstellDatum;
             this.Dateiart = dateiArt;
+            this.objekt = objekt;
         }
 
         public int Id
@@ -69,19 +67,6 @@ namespace Model
             }
         }
 
-        public int Groesse
-        {
-            get
-            {
-                return groesse;
-            }
-
-            set
-            {
-                groesse = value;
-            }
-        }
-
         public DateTime ErstellDatum
         {
             get
@@ -110,7 +95,7 @@ namespace Model
 
         public override string ToString()
         {
-            return name + " " + erstellDatum + " " + groesse + " " + dateiart;
+            return objekt + " " + erstellDatum + " " + dateiart;
         }
 
     }

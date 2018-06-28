@@ -30,9 +30,9 @@ namespace Model
 
         public List<Projekt> openDatabase()
         {
-            OpenConnection();
             OleDbCommand cmd = con.CreateCommand();
             cmd.CommandText = "Select * from Files";
+            OpenConnection();
             reader = cmd.ExecuteReader();
             int i = 0;
             while(reader.Read())
@@ -53,7 +53,6 @@ namespace Model
                 wd.Id = Convert.ToInt32(pruefen(reader[i++]));
                 wd.Name = Convert.ToString(pruefen(reader[i++]));
                 wd.Objekt = pruefen(reader[i++]);
-                wd.Groesse = Convert.ToInt32(pruefen(reader[i++]));
                 wd.ErstellDatum = Convert.ToDateTime(pruefen(reader[i++]));
                 wd.Dateiart = Convert.ToString(pruefen(reader[i++]));
             }
@@ -94,7 +93,7 @@ namespace Model
             {
                 Projekt p = (Projekt)o;
                 OleDbCommand cmd = con.CreateCommand();
-                cmd.CommandText = "Delete from Files where Name = " + p.Name;
+                cmd.CommandText = "Delete from Files where Name = '" + p.Name + "'";
                 OpenConnection();
                 cmd.ExecuteNonQuery();
                 con.Close();
