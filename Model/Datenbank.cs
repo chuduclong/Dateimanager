@@ -183,7 +183,47 @@ namespace Model
             }
         }
 
+        public void AddDokus(String name, Object ob, DateTime date, String dateiart)
+        {
+            try
+            {
+                OleDbCommand cmd = con.CreateCommand();
+                cmd.Parameters.AddWithValue("name", name);
+                cmd.Parameters.AddWithValue("ob", ob);
+                cmd.Parameters.AddWithValue("date", date);
+                switch (dateiart)
+                {
+                    case "doc":
+                        dateiart = "word";
+                        break;
+                    case "docx":
+                        dateiart = "word";
+                        break;
+                    case "xls":
+                        dateiart = "excel";
+                        break;
+                    case "xslx":
+                        dateiart = "excel";
+                        break;
+                    case "ppt":
+                        dateiart = "powerpoint";
+                        break;
+                    case "pptx":
+                        dateiart = "powerpoint";
+                        break;
+                }
+                cmd.Parameters.AddWithValue("dateiart", dateiart);
+                String sql = "Insert into Files (Name, Dokument, Erstelldatum, Dateiart) Values(name, ob, date, dateiart)";
+                cmd.CommandText = sql;
+                OpenConnection();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch
+            {
 
+            }
+        }
 
 
     }

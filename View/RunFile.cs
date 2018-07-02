@@ -3,6 +3,7 @@ using Word = Microsoft.Office.Interop.Word;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 using Excel = Microsoft.Office.Interop.Excel;
 using Model;
+using System.IO;
 
 namespace View
 {
@@ -67,6 +68,11 @@ namespace View
         public void closeCurrentPowerPointPresentation()
         {
             Pres.Close();
+        }
+
+        public void addFile(FileInfo fi, String dateiart)
+        {
+            ds.AddDokus(fi.Name, fi.Name, fi.CreationTime, dateiart);
         }
     }
 }

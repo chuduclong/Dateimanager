@@ -6,6 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Globalization;
+using System.IO;
 
 namespace View
 {
@@ -61,6 +62,10 @@ namespace View
             openFileDialog1.Filter = "Word Documents (*.DOC;*.DOCX)|*.DOC;*.DOCX|Excel Workbook (*.XLS;*.XSLX)|*.XLS;*.XLSX|PowerPoint Präsentation (*.PPT;*.PPTX)|*.PPT;*.PPTX";
             openFileDialog1.ShowDialog();
             filename = openFileDialog1.FileName;
+            FileInfo fi = new FileInfo(filename);
+
+            String[] z = filename.Split('.');
+            run1.addFile(fi, z[1]);
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
