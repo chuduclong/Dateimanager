@@ -19,7 +19,6 @@ namespace View
         Datenbank db = null;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private string filename = null;
-        private string dateiart = null;
 
         public MainWindow()
         {
@@ -35,6 +34,7 @@ namespace View
             {
                 if (p.Name != null)
                 {
+                    filename = p.Name;
                     switch (p.Dateiart)
                     {
                         case "word":
@@ -67,7 +67,7 @@ namespace View
             {
                 FileInfo fi = new FileInfo(filename);
                 String[] z = filename.Split('.');
-                db.AddDokus(fi.Name, z[1], fi.CreationTime);
+                db.AddDokus(fi.FullName, z[1], fi.CreationTime);
             }
             catch (Exception)
             {
@@ -84,19 +84,16 @@ namespace View
         private void buttonWord_Click(object sender, RoutedEventArgs e)
         {
             listDokumente.ItemsSource = db.WordAnzeigen();
-            dateiart = "word";
         }
 
         private void buttonPower_Click(object sender, RoutedEventArgs e)
         {
             listDokumente.ItemsSource = db.PowerpointAnzeigen();
-            dateiart = "powerpoint";
         }
 
         private void buttonExcel_Click(object sender, RoutedEventArgs e)
         {
             listDokumente.ItemsSource = db.ExcelAnzeigen();
-            dateiart = "excel";
         }
     }
 }
