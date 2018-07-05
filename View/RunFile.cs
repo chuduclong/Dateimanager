@@ -70,9 +70,9 @@ namespace View
             Pres.Close();
         }
 
-        public void addFile(FileInfo fi, String dateiart)
+        public void addFile(String name, String dateiart, DateTime date)
         {
-            ds.AddDokus(fi.Name, fi.Name, fi.CreationTime, dateiart);
+            ds.AddDokus(name, dateiart, date);
         }
     }
 }

@@ -30,11 +30,12 @@ namespace View
 
         private void buttonOeffnen_Click(object sender, RoutedEventArgs e)
         {
-            if (dateiart != null)
+            Projekt p = (Projekt)listDokumente.SelectedItem;
+            if (p.Dateiart != null)
             {
-                if (filename != null)
+                if (p.Name != null)
                 {
-                    switch (dateiart)
+                    switch (p.Dateiart)
                     {
                         case "word":
                             run1.openExistingWordFile(filename);
@@ -62,10 +63,17 @@ namespace View
             openFileDialog1.Filter = "Word Documents (*.DOC;*.DOCX)|*.DOC;*.DOCX|Excel Workbook (*.XLS;*.XSLX)|*.XLS;*.XLSX|PowerPoint Präsentation (*.PPT;*.PPTX)|*.PPT;*.PPTX";
             openFileDialog1.ShowDialog();
             filename = openFileDialog1.FileName;
-            FileInfo fi = new FileInfo(filename);
+            try
+            {
+                FileInfo fi = new FileInfo(filename);
+                String[] z = filename.Split('.');
+                db.AddDokus(fi.Name, z[1], fi.CreationTime);
+            }
+            catch (Exception)
+            {
 
-            String[] z = filename.Split('.');
-            run1.addFile(fi, z[1]);
+                throw;
+            }
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
