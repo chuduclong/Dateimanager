@@ -19,20 +19,33 @@ namespace View
 
         public void openExistingWordFile(string name)
         {
-            Object oMissing = System.Reflection.Missing.Value;
-            Doc = WordApp.Documents.Open(name, oMissing, false);
+            object missingValue = Type.Missing;
+            object fileName = name;
+            object readOnly = false;
+            object isVisible = true;
+            WordApp = new Word.Application();
+            WordApp.Visible = true;
+            Doc = WordApp.Documents.Open(ref fileName);
+            Doc.Activate();
         }
 
         public void openExistingPowerPointPresentation(string name)
         {
-            Object oMissing = System.Reflection.Missing.Value;
-            Pres = PowerPointApp.Presentations.Open(name);
+            string fileName = name;
+            PowerPointApp = new PowerPoint.Application();
+            PowerPointApp.Visible = Microsoft.Office.Core.MsoTriState.msoTrue;
+            Pres = PowerPointApp.Presentations.Open(fileName);
         }
 
         public void openExistingExcelWorkbook(string name)
         {
-            Object oMissing = System.Reflection.Missing.Value;
-            Workbook = ExcelApp.Workbooks.Open(name, oMissing, false);
+            object missingValue = Type.Missing;
+            string fileName = name;
+            object readOnly = false;
+            object isVisible = true;
+            ExcelApp = new Excel.Application();
+            ExcelApp.Visible = true;
+            Workbook = ExcelApp.Workbooks.Open(name, missingValue, false);
         }
 
         public void openNewWordFile()

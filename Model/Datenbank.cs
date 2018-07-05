@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using Microsoft.Office.Interop.Access.Dao;
 
 namespace Model
 {
@@ -220,11 +221,7 @@ namespace Model
                 con.Close();
             }
             catch
-            {
-
-            }
+            { }
         }
-
-
-    }
+      }
 }
