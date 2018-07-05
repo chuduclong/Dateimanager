@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using Microsoft.Office.Interop.Access.Dao;
 
 namespace Model
 {
@@ -53,7 +52,6 @@ namespace Model
             {
                 wd.Id = Convert.ToInt32(pruefen(reader[i++]));
                 wd.Name = Convert.ToString(pruefen(reader[i++]));
-                wd.Objekt = pruefen(reader[i++]);
                 wd.ErstellDatum = Convert.ToDateTime(pruefen(reader[i++]));
                 wd.Dateiart = Convert.ToString(pruefen(reader[i++]));
             }
@@ -184,14 +182,11 @@ namespace Model
             }
         }
 
-        public void AddDokus(String name, Object ob, DateTime date, String dateiart)
+        public void AddDokus(String name, String dateiart, DateTime date)
         {
             try
-            {
+            {;
                 OleDbCommand cmd = con.CreateCommand();
-                cmd.Parameters.AddWithValue("name", name);
-                cmd.Parameters.AddWithValue("ob", ob);
-                cmd.Parameters.AddWithValue("date", date);
                 switch (dateiart)
                 {
                     case "doc":
@@ -213,8 +208,10 @@ namespace Model
                         dateiart = "powerpoint";
                         break;
                 }
+                cmd.Parameters.AddWithValue("name", name);
                 cmd.Parameters.AddWithValue("dateiart", dateiart);
-                String sql = "Insert into Files (Name, Dokument, Erstelldatum, Dateiart) Values(name, ob, date, dateiart)";
+                cmd.Parameters.AddWithValue("date", date);
+                String sql = "Insert into Files (Name, Dateiart) Values (name, dateiart)";
                 cmd.CommandText = sql;
                 OpenConnection();
                 cmd.ExecuteNonQuery();
